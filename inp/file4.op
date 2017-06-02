@@ -1,0 +1,61 @@
+submit ls -l
+submit ./long 1
+submit ls -l
+submit ./long 1
+submit ./long 2
+submit ./long 3
+submit ls -l
+submit ./long 4
+submit ls -l
+submit ./long 5
+submit ./long 6
+submit ls -l
+submit ./long 7
+submit ls -l
+submit ./long 8
+submit ./long 9
+submit ./long 10
+submit ./long 11
+submit ls -l
+submit ./long 1
+submit ls -l
+submit ./long 1
+submit ./long 2
+submit ./long 3
+submit ls -l
+submit ./long 4
+submit ls -l
+submit ./long 5
+submit ./long 6
+submit ls -l
+submit ./long 7
+submit ls -l
+submit ./long 8
+submit ./long 9
+submit ./long 10
+submit ./long 11
+submit ls -l
+submit ./long 1
+submit ls -l
+submit ./long 1
+submit ./long 2
+submit ./long 3
+submit ls -l
+submit ./long 4
+submit ls -l
+submit ./long 5
+submit ./long 6
+submit ls -l
+submit ./long 7
+submit ls -l
+submit ./long 8
+submit ./long 9
+submit ./long 10
+submit ./long 11
+status 1
+show-active
+show-pools
+status-all
+show-finished
+suspend 1
+resume 1

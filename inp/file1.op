@@ -1,0 +1,4 @@
+submit ls -l
+submit pwd
+submit cat jms-coord/source/coordinator.cpp
+shutdown

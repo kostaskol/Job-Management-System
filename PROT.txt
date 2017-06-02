@@ -1,0 +1,47 @@
+CONSOLE - COORDINATOR COMMUNICATION:
+	PROT_REQ:	
+		submit		: 0<cmd>
+    				     ^ up to 198 characters
+		status	   	: 1<jid>
+		status-all 	: 2(<sec>)
+		show-active	: 3
+		show-pool	: 4
+		show-finished	: 5
+		suspend		: 6<jid>
+		resume		: 7<jid>
+		shutdown	: 8
+		job-death	: j<jpid> (sent by pools)
+
+	PROT_RESP:
+		submit		:0jid jpid
+		status		:10<sec>|1|2|3
+				  ^ 	 ^ ^ ^________
+				 /	 |  \____     \
+				/        |	 \     \_____
+			       /     Suspended    \ 	     \
+			      /   	       Finished   Invalid Job id
+			   Active(<sec> seconds)
+		status-all	: 2status1 status2 ... statusN (exp. For a zero starting job counter, vector's i-th index
+								will hold the status of the i-th job)
+		show-active	: 3jid1 jid2 ... jidN
+		show-pool	: 4<pool_pid1>-<num_jobs1> .. <pool_pid2>-<num_jobs2>	
+		show-finished	: 5<jid1> <jid2> .. <jidN>
+		suspend		: 6K|X|E|F|I--------- Invalid ID
+				   ^ ^ |_|_____________ Job finished
+				  /   \		|
+		        	 OK  NOT OKAY  Already suspended
+		resume		: 7K|X|I|S----> Not suspended
+		shutdown	: 8K|X
+		job-death	: jK|X (sent to pools)
+
+COORDINATOR - POOLS COMMUNICATION:
+	PROT_P_REQ:
+		submit		: 0<jid> <com mand>
+		suspend		: 1<jid>
+		resume		: 2<jid>
+
+	PROT_P_RESP:
+		submit		: 0<jid>
+		suspend		: 1K|X
+		resume		: 2K|X
+
