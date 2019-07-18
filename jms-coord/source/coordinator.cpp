@@ -598,7 +598,7 @@ void pool_listener(int sig) {
   pid_t p;
   while ((p = waitpid(-1, NULL, WNOHANG)) > 0) {
     cout << "Coord: Got pool death #" << p << "@";
-    hf::print_stamp();
+    // hf::print_stamp();
     cout << endl;
 
     my_string pool_id;
